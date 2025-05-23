@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container mt-5 p-5">
+			<h2 class="mb-4">Manage Slider Images</h2>
+			<hr>
+			<a href="/admin/" class="text-decoration-none fs-4 fw-bold"><i
+				class="fa-solid fa-arrow-left"></i> Back</a>
+
+			<th:block th:if="${session.succMsg}">
+				<p class="text-success fw-bold text-center">[[${session.succMsg}]]</p>
+				<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+			</th:block>
+
+			<th:block th:if="${session.errorMsg}">
+				<p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+				<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+			</th:block>
+
+			<div class="row">
+				<div class="col-md-8">
+					<form method="post" action="/admin/slider-image/upload"
+						enctype="multipart/form-data">
+						<input type="text" name="title" placeholder="Image Title"
+							class="form-control mb-2" required /> <input type="file"
+							name="file" class="form-control mb-2" required />
+						<button class="btn btn-success" type="submit">Upload</button>
+					</form>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-md-4" th:each="img : ${sliderImages}">
+					<div class="card mb-3">
+						<img th:src="@{'/slider-images/' + ${img.imageName}}"
+							class="card-img-top" alt="Slider Image" />
+						<div class="card-body">
+							<h5 class="card-title" th:text="${img.title}"></h5>
+							<a th:href="@{'/admin/slider-image/delete/' + ${img.id}}"
+								class="btn btn-danger">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

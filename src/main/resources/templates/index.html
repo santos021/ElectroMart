@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>ElectroTech – Smart Electronics E-Commerce Interface</title>
+</head>
+<body>
+
+	<section>
+		<!-- Start Slider -->
+
+		<!-- <div id="carouselAutoplaying"
+			class="carousel slide carousel-dark mt-3 mb-1"
+			data-bs-ride="carousel">
+
+			<div class="carousel-inner">
+				Loop through slider images
+				<div th:each="img, stat : ${sliderImages}"
+					th:classappend="${stat.index == 0} ? 'active' : ''"
+					class="carousel-item">
+					<img th:src="@{'/slider-images/' + ${img.imageName}}"
+						class="d-block w-100" alt="Slider Image" height="430px">
+				</div>
+			</div>
+
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#carouselAutoplaying" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div> -->
+
+		<div id="carouselAutoplaying"
+			class="carousel slide carousel-dark mt-3 mb-1"
+			data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="images/ecom1.png" class="d-block w-100" alt="..."
+						height="430px">
+				</div>
+				<div class="carousel-item">
+					<img src="images/ecom2.jpg" class="d-block w-100" alt="..."
+						height="430px">
+				</div>
+				<div class="carousel-item">
+					<img src="images/ecom3.jpg" class="d-block w-100" alt="..."
+						height="430px">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"
+					style="color: black;"></span> <span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#carouselAutoplaying" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+
+		<!-- End Slider -->
+
+		<!-- Start Category Module -->
+		<div class="container">
+			<div class="row">
+				<p class="text-center fs-4">Category</p>
+				<div class="col-md-2" th:each="c:${category}">
+					<div
+						class="card rounded-circle shadow-sm p-1 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<!-- <img th:src="@{'images/category_img/'+${c.imageName}}" width="75%"
+								height="140px"> <br>
+							<a th:href="@{'/products?category='+${c.name}}" class="text-decoration-none text-dark">[[${c.name}]]</a> -->
+
+							<a th:href="@{'/products?category='+${c.name}}"
+								class="text-decoration-none text-dark"> <img
+								th:src="@{'images/category_img/'+${c.imageName}}" width="75%"
+								height="140px"> <br>
+								<p>[[${c.name}]]</p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="col-md-2">
+					<div
+						class="card rounded-circle shadow-sm p-2 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img src="images/category_img/mobile.png" width="75%"
+								height="140px">
+							<p>SmartPhone</p>
+						</div>
+					</div>
+				</div> -->
+
+				<!-- <div class="col-md-2">
+					<div
+						class="card rounded-circle shadow-sm p-2 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img src="images/category_img/television.png" width="75%"
+								height="140px">
+							<p>Television</p>
+						</div>
+					</div>
+				</div> -->
+
+				<!-- <div class="col-md-2">
+					<div
+						class="card rounded-circle shadow-sm p-2 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img src="images/category_img/laptop.jpg" width="75%"
+								height="140px">
+							<p>Laptop</p>
+						</div>
+					</div>
+				</div> -->
+
+				<!-- <div class="col-md-2">
+					<div
+						class="card rounded-circle shadow-sm p-2 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img src="images/category_img/speakers.png" width="75%"
+								height="140px">
+							<p>Audio Device</p>
+						</div>
+					</div>
+				</div> -->
+
+				<!-- <div class="col-md-2">
+					<div
+						class="card rounded-circle shadow-sm p-2 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img src="images/category_img/watches.png" width="75%"
+								height="140px">
+							<p>SmartWatches</p>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<!-- End Category Module -->
+
+		<!-- Start Latest Product Module -->
+
+		<div class="container-fluid bg-light p-3">
+			<div class="row">
+				<p class="text-center fs-4">Latest Product</p>
+				<div class="col-md-3" th:each="p:${products}">
+					<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<!-- <img alt="" th:src="@{'images/product_img/'+${p.image}}" class=""
+								width="65%" height="140px">
+							<p>
+								<a th:href="@{'/product/'+${p.id}}"
+									class="text-decoration-none text-dark">[[${p.title}]]</a>
+							</p> -->
+							<a th:href="@{'/product/'+${p.id}}"
+								class="text-decoration-none text-dark"> <img alt=""
+								th:src="@{'images/product_img/'+${p.image}}" class=""
+								width="65%" height="140px">
+								<p>[[${p.title}]]</p>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-md-3">
+					<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img alt="" src="images/product_img/wireless_headphones.png" class=""
+								width="65%" height="140px">
+							<p>zebronics headphone</p>
+						</div>
+					</div>
+				</div> -->
+				<!-- <div class="col-md-3">
+					<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img alt="" src="images/product_img/television.png" class=""
+								width="65%" height="140px">
+							<p>Samsung Monitor</p>
+						</div>
+					</div>
+				</div> -->
+				<!-- <div class="col-md-3">
+					<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img alt="" src="images/product_img/laptop.jpg" class=""
+								width="65%" height="140px">
+							<p>HP Laptop</p>
+						</div>
+					</div>
+				</div> -->
+
+			</div>
+		</div>
+
+		<!-- End Latest Product Module -->
+
+	</section>
+
+</body>
+</html>
