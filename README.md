@@ -6,7 +6,7 @@
 
 ## 🔧 Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap  
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap, Thymeleaf  
 - **Backend**: Spring Boot, Spring Data JPA, Spring Security
 - **Database**: MySQL
 
